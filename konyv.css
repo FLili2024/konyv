@@ -1,5 +1,5 @@
 /* =========================
-   ALAP RESET
+   ALAP
 ========================= */
 
 *{
@@ -13,416 +13,249 @@ html{
 }
 
 body{
-    background:
-        linear-gradient(
-            to bottom,
-            #1a1d24,
-            #232833,
-            #2b3240
-        );
-
-    color:#f1f1f1;
-
-    font-family:Arial, Helvetica, sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
+    background:#0b0c10;
+    color:#e5e5e5;
     overflow-x:hidden;
+    text-align:justify;
 }
 
 
 /* =========================
-   HERO / FEJLÉC
+   HERO - NETFLIX STYLE
 ========================= */
 
 .hero{
     position:relative;
-
-    width:100%;
     height:100vh;
-
-    overflow:hidden;
-
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
+    padding:0 8%;
+    overflow:hidden;
 }
 
-
-/* háttér */
+/* háttér kép */
 .hero::before{
     content:"";
-
     position:absolute;
     inset:0;
-
     background:
         url("könyvgerinc.jpg")
-        center center/cover
-        no-repeat;
-
-    transform:scale(1);
-
-    animation:
-        slowZoom 18s ease-in-out infinite alternate;
-
-    filter:
-        brightness(0.55)
-        contrast(1.05)
-        saturate(0.8);
-
-    z-index:1;
+        center/cover no-repeat;
+    filter:brightness(0.35) contrast(1.1);
+    transform:scale(1.05);
 }
 
-
-/* overlay */
+/* sötét Netflix overlay */
 .hero::after{
     content:"";
-
     position:absolute;
     inset:0;
-
     background:
         linear-gradient(
-            to bottom,
-            rgba(15,18,25,0.55),
-            rgba(28,34,45,0.72)
+            90deg,
+            rgba(0,0,0,0.85) 0%,
+            rgba(0,0,0,0.6) 40%,
+            rgba(0,0,0,0.2) 100%
         );
-
-    z-index:2;
 }
 
-
-/* hero tartalom */
+/* tartalom */
 .hero-content{
     position:relative;
-
-    z-index:3;
-
-    text-align:center;
-
-    max-width:900px;
-
-    padding:20px;
-
-    animation:
-        fadeUp 1.8s ease;
+    z-index:2;
+    max-width:650px;
+    animation: fadeIn 1.2s ease;
 }
-
 
 .hero h1{
-    font-size:
-        clamp(3rem, 8vw, 7rem);
-
-    font-weight:300;
-
-    letter-spacing:4px;
-
-    margin-bottom:20px;
-
-    text-shadow:
-        0 0 25px rgba(255,255,255,0.15);
+    font-size:4rem;
+    font-weight:700;
+    color:#e50914;
+    letter-spacing:2px;
+    margin-bottom:10px;
 }
-
 
 .hero h2{
-    font-size:
-        clamp(1.2rem, 3vw, 2rem);
-
-    font-weight:200;
-
-    color:#d8dce5;
-
-    margin-bottom:40px;
+    font-size:1.6rem;
+    font-weight:400;
+    color:#fff;
+    margin-bottom:25px;
 }
 
-
 .hero p{
-    font-size:1.2rem;
-
+    font-size:1.1rem;
     line-height:1.8;
-
-    color:#d0d4dc;
-
-    max-width:700px;
-
-    margin:auto;
+    color:#d1d1d1;
 }
 
 
 /* =========================
-   GOMBOK
+   NETFLIX GOMBOK
 ========================= */
 
 .hero-buttons{
-    margin-top:50px;
-
+    margin-top:30px;
     display:flex;
-    justify-content:center;
-    gap:20px;
-
+    gap:15px;
     flex-wrap:wrap;
 }
 
-
 .btn{
-    padding:16px 34px;
-
-    border:
-        1px solid rgba(255,255,255,0.12);
-
-    color:white;
-
+    padding:12px 22px;
+    border-radius:4px;
     text-decoration:none;
-
-    letter-spacing:2px;
-
+    font-weight:600;
     font-size:0.9rem;
-
-    transition:0.4s ease;
-
-    backdrop-filter:blur(4px);
-
-    background:
-        rgba(255,255,255,0.08);
+    transition:0.3s ease;
 }
 
+/* elsődleges gomb */
+.btn:first-child{
+    background:#e50914;
+    color:white;
+}
 
-.btn:hover{
-    background:#d8dde8;
+.btn:first-child:hover{
+    background:#ff1b2a;
+}
 
-    color:#1c2230;
+/* másodlagos */
+.btn:last-child{
+    background:rgba(255,255,255,0.15);
+    color:white;
+    backdrop-filter:blur(6px);
+}
 
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 10px 30px rgba(255,255,255,0.15);
+.btn:last-child:hover{
+    background:rgba(255,255,255,0.25);
 }
 
 
 /* =========================
-   KÖNYV SZEKCIÓ
+   BOOK SECTION - NETFLIX CARD
 ========================= */
 
 .book-section{
-    min-height:100vh;
-
-    padding:120px 10%;
-
+    padding:100px 8%;
     display:flex;
+    gap:60px;
     align-items:center;
-    justify-content:center;
-    gap:80px;
-
+    background:#0f1117;
     flex-wrap:wrap;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #2a313d,
-            #394454
-        );
 }
 
-
-/* könyv kép */
-.book-image{
-    flex:1;
-
-    min-width:320px;
-
-    display:flex;
-    justify-content:center;
-}
-
-
+/* kép card effekt */
 .book-image img{
     width:100%;
-
-    max-width:420px;
-
-    border-radius:12px;
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.45),
-        0 0 25px rgba(255,255,255,0.05);
-
-    transition:0.6s ease;
-
-    animation:
-        floatBook 6s ease-in-out infinite;
+    max-width:380px;
+    border-radius:10px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    transition:0.4s ease;
 }
-
 
 .book-image img:hover{
-    transform:
-        scale(1.03)
-        rotate(-1deg);
+    transform:scale(1.04);
 }
-
 
 /* szöveg */
 .book-text{
     flex:1;
-
-    min-width:320px;
+    min-width:300px;
 }
-
 
 .book-text h2{
-    font-size:3rem;
-
-    margin-bottom:30px;
-
-    font-weight:300;
-
-    letter-spacing:3px;
+    font-size:2.8rem;
+    margin-bottom:20px;
+    color:#fff;
 }
-
 
 .book-text p{
-    font-size:1.15rem;
-
-    line-height:2;
-
-    color:#dde1e7;
-
-    margin-bottom:25px;
+    font-size:1.05rem;
+    line-height:1.9;
+    color:#cfcfcf;
+    margin-bottom:15px;
 }
 
-
-/* idézet */
+/* idézet Netflix style */
 .quote{
-    margin-top:40px;
-
-    padding-left:20px;
-
-    border-left:
-        2px solid rgba(255,255,255,0.2);
-
+    margin-top:30px;
+    padding:15px 20px;
+    border-left:3px solid #e50914;
     font-style:italic;
-
-    color:#f1f1f1;
+    color:#fff;
+    background:rgba(255,255,255,0.05);
+    border-radius:6px;
 }
 
 
 /* =========================
-   HÁTLAP
+   HÁTLAP - CINEMATIC
 ========================= */
 
 .back-cover{
-    padding:140px 10%;
-
+    padding:100px 8%;
+    background:#0b0c10;
     text-align:center;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #323b49,
-            #2a313d
-        );
 }
-
 
 .back-cover img{
     width:100%;
-
-    max-width:450px;
-
-    border-radius:10px;
-
-    transition:0.5s ease;
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,0.45);
+    max-width:420px;
+    border-radius:12px;
+    box-shadow:0 25px 70px rgba(0,0,0,0.7);
+    transition:0.4s ease;
 }
 
-
 .back-cover img:hover{
-    transform:
-        scale(1.02);
+    transform:scale(1.03);
 }
 
 
 /* =========================
-   KAPCSOLAT
+   CONTACT - CARD UI
 ========================= */
 
 .contact{
-    padding:140px 10%;
-
-    background:#323b49;
-
+    padding:120px 8%;
+    background:#0f1117;
     text-align:center;
 }
 
-
 .contact h2{
-    font-size:3rem;
-
-    margin-bottom:50px;
-
-    font-weight:300;
+    font-size:2.8rem;
+    margin-bottom:40px;
+    color:#fff;
 }
-
 
 .contact-info{
     display:flex;
-
     justify-content:center;
-
-    gap:60px;
-
-    flex-wrap:wrap;
 }
-
 
 .contact-card{
-    padding:35px;
-
-    min-width:280px;
-
-    border:
-        1px solid rgba(255,255,255,0.08);
-
-    background:
-        rgba(255,255,255,0.05);
-
-    transition:0.4s ease;
-
+    background:rgba(255,255,255,0.06);
+    padding:40px;
     border-radius:12px;
-
-    backdrop-filter:blur(8px);
+    min-width:300px;
+    max-width:500px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    transition:0.3s ease;
 }
-
 
 .contact-card:hover{
-    transform:
-        translateY(-10px);
-
-    background:
-        rgba(255,255,255,0.08);
-
-    box-shadow:
-        0 20px 40px rgba(0,0,0,0.25);
+    transform:translateY(-10px);
 }
-
 
 .contact-card h3{
-    margin-bottom:15px;
-
-    font-weight:400;
-
-    letter-spacing:2px;
+    color:#fff;
+    margin-bottom:10px;
 }
 
-
-.contact-card p,
 .contact-card a{
-    color:#f1f1f1;
-
+    color:#e50914;
     text-decoration:none;
-
-    line-height:1.8;
 }
 
 
@@ -431,133 +264,56 @@ body{
 ========================= */
 
 footer{
-    padding:40px;
-
+    padding:30px;
     text-align:center;
-
-    color:#c6ccd6;
-
-    background:#242b36;
-
-    border-top:
-        1px solid rgba(255,255,255,0.05);
+    background:#0b0c10;
+    color:#888;
+    border-top:1px solid rgba(255,255,255,0.05);
 }
 
 
 /* =========================
-   ANIMÁCIÓK
+   ANIMÁCIÓ
 ========================= */
 
-@keyframes slowZoom{
-
-    from{
-        transform:scale(1);
-    }
-
-    to{
-        transform:scale(1.08);
-    }
-}
-
-
-@keyframes fadeUp{
-
+@keyframes fadeIn{
     from{
         opacity:0;
-
-        transform:
-            translateY(40px);
+        transform:translateY(20px);
     }
-
     to{
         opacity:1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-@keyframes floatBook{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(-12px);
-    }
-
-    100%{
-        transform:translateY(0px);
+        transform:translateY(0);
     }
 }
 
 
 /* =========================
-   SCROLLBAR
-========================= */
-
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-track{
-    background:#1f2430;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#4d5868;
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background:#667385;
-}
-
-
-/* =========================
-   RESZPONZÍV
+   MOBIL
 ========================= */
 
 @media(max-width:900px){
 
     .hero{
-        height:auto;
+        padding:0 20px;
+        justify-content:center;
+        text-align:center;
+    }
 
-        min-height:100vh;
+    .hero-content{
+        max-width:100%;
+    }
 
-        padding:120px 20px;
+    .hero h1{
+        font-size:3rem;
     }
 
     .book-section{
-        padding:100px 25px;
-
-        gap:50px;
-    }
-
-    .book-text h2{
-        font-size:2.2rem;
-    }
-
-    .contact{
-        padding:100px 25px;
-    }
-
-    .contact h2{
-        font-size:2.2rem;
+        flex-direction:column;
+        text-align:center;
     }
 
     .hero-buttons{
-        flex-direction:column;
-
-        align-items:center;
-    }
-
-    .btn{
-        width:100%;
-
-        max-width:320px;
-
-        text-align:center;
+        justify-content:center;
     }
 }
